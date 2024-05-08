@@ -8,6 +8,12 @@ export interface Images {
 		blur: boolean;
 		motion_blur: boolean;
 	};
+	image_result: {
+		bad: boolean;
+		unknown_SKU: boolean;
+		mistake: boolean;
+		correct: boolean;
+	};
 	dataset: string;
 	SKU: string;
 }

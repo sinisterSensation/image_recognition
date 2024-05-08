@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
 import "./assets/style.css";
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Sidebar />
-    </div>
-  );
+	return (
+		<div className="App">
+			<Navbar />
+			<Sidebar />
+		</div>
+	);
 }
 
 export default App;
-

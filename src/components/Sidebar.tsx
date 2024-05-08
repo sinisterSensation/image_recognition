@@ -4,13 +4,14 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
+import Navbar from "./Navbar";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const Sidebar = () => {
 	const [imageSize, setImageSize] = useState<number>(0);
 	const [pageSize, setPageSize] = useState<number>(0);
-	const [switchChecked, setSwitchChecked] = useState<boolean>(false);
+	const [switchChecked, setSwitchChecked] = useState<any>(false);
 
 	const handleImageSizeChange = (event: Event, newValue: number | number[]) => {
 		setImageSize(newValue as number);
@@ -21,7 +22,7 @@ const Sidebar = () => {
 	};
 
 	const handleSwitchChange = () => {
-		setSwitchChecked((prev) => !prev);
+		setSwitchChecked((switchChecked: any) => true);
 	};
 
 	return (
@@ -49,6 +50,10 @@ const Sidebar = () => {
 				<Box className="tool" sx={{ width: 200 }}>
 					<Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
 						<Slider
+							valueLabelDisplay="auto"
+							step={10}
+							min={20}
+							max={200}
 							aria-label="Image Size"
 							value={imageSize}
 							onChange={handleImageSizeChange}
@@ -72,6 +77,10 @@ const Sidebar = () => {
 				<Box className="tool" sx={{ width: 200 }}>
 					<Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
 						<Slider
+							valueLabelDisplay="auto"
+							step={10}
+							min={10}
+							max={200}
 							aria-label="Page Size"
 							value={pageSize}
 							onChange={handlePageSizeChange}
