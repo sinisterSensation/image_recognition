@@ -4,7 +4,7 @@ import ImageStore from "../store/ImageStore";
 import { ReactComponent as Logo } from "../icons/logo.svg";
 import Imagelist from "./Imagelist";
 
-const Navbar: React.FC = (switchChecked, handleSwitchChange) => {
+const Navbar: React.FC<{ switchChecked: boolean }> = ({ switchChecked }) => {
 	const [menuItems, setMenuItems] = useState<{ name: string; dataset: string; SKU: string }[]>([]);
 	const [selectedItem, setSelectedItem] = useState<{ dataset: string; SKU: string }>({ dataset: "", SKU: "" });
 
@@ -66,8 +66,12 @@ const Navbar: React.FC = (switchChecked, handleSwitchChange) => {
 					</select>
 				</div>
 			</nav>
-			<Navbar  />
-			<Imagelist selectedDataset={selectedItem.dataset} selectedSKU={selectedItem.SKU} updateImageResult={ImageStore.updateImageResult} switchChecked={switchChecked} handleSwitchChange={handleSwitchChange} />
+			<Imagelist
+				selectedDataset={selectedItem.dataset}
+				selectedSKU={selectedItem.SKU}
+				updateImageResult={ImageStore.updateImageResult}
+				switchChecked={switchChecked}
+			/>
 		</div>
 	);
 };

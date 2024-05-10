@@ -11,13 +11,11 @@ const Imagelist = ({
 	selectedSKU,
 	updateImageResult,
 	switchChecked,
-	handleSwitchChange,
 }: {
 	selectedDataset: string;
 	selectedSKU: string;
 	updateImageResult: (updatedImages: Images[]) => void;
-	switchChecked: any;
-	handleSwitchChange: any;
+	switchChecked: boolean;
 }) => {
 	const [selectedImage, setSelectedImage] = useState<Images | null>(null);
 
@@ -82,7 +80,7 @@ const Imagelist = ({
 		ImageStore.updateImageResultCallback(ImageStore.updateImageResult);
 	}, []);
 
-	const renderImages = (images: Images[], imageType: string, switchChecked: boolean) => {
+	const renderImages = (images: Images[], imageType: string) => {
 		let rowLimit = imageType === "wide" ? 3 : 4;
 		let maxWidth = imageType === "wide" ? 320 : 240;
 
@@ -90,22 +88,22 @@ const Imagelist = ({
 		let currentRow: JSX.Element[] = [];
 
 		images.forEach((image, index) => {
-            currentRow.push(
-                <div key={image.id} className="img_in_list_block">
-                    <img
-                        className={`img_in_list ${selectedImage === image ? "selected" : ""}`}
-                        src={image.path}
-                        alt={`${image.dataset} - ${image.SKU}`}
-                        style={{
-                            width: `${100 / rowLimit}%`,
-                            maxHeight: "240px",
-                            maxWidth: `${maxWidth}px`,
-                            filter: switchChecked ? "blur(5px)" : "none", 
-                        }}
-                        onClick={() => handleClick(image)}
-                    />
-					{selectedImage === image && (
-						<div className="selected_image_details">
+			currentRow.push(
+			  <div key={image.id} className="img_in_list_block">
+				<img
+				  className={`img_in_list ${selectedImage === image ? "selected" : ""}`}
+				  src={image.path}
+				  alt={`${image.dataset} - ${image.SKU}`}
+				  style={{
+					width: `${100 / rowLimit}%`,
+					maxHeight: "240px",
+					maxWidth: `${maxWidth}px`,
+					filter: switchChecked ? "blur(4px)" : "none", 
+				  }}
+				  onClick={() => handleClick(image)}
+				/>
+				{selectedImage === image && (
+				  <div className="selected_image_details">
 							<div className="img_btn_block">
 								<button className="img_btn" onClick={handleCross}>
 									<Cross className="cross_img" />
@@ -143,8 +141,8 @@ const Imagelist = ({
 
 	return (
 		<div className="imagelist">
-			{renderImages(wideImages, "wide", switchChecked)}
-			{renderImages(narrowImages, "narrow", switchChecked)}
+			{renderImages(wideImages, "wide")}
+			{renderImages(narrowImages, "narrow")}
 		</div>
 	);
 };

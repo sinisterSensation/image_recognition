@@ -178,7 +178,7 @@ body {
 }
 
 .selected {
-	border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 1px 1px;
 	outline: 1px solid var(--dark);
 }
 

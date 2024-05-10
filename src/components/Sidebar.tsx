@@ -11,7 +11,7 @@ const label = { inputProps: { "aria-label": "Switch demo" } };
 const Sidebar = () => {
 	const [imageSize, setImageSize] = useState<number>(0);
 	const [pageSize, setPageSize] = useState<number>(0);
-	const [switchChecked, setSwitchChecked] = useState<any>(false);
+	const [switchChecked, setSwitchChecked] = useState<boolean>(false);
 
 	const handleImageSizeChange = (event: Event, newValue: number | number[]) => {
 		setImageSize(newValue as number);
@@ -22,7 +22,7 @@ const Sidebar = () => {
 	};
 
 	const handleSwitchChange = () => {
-		setSwitchChecked((switchChecked: any) => true);
+		setSwitchChecked((prev) => !prev);
 	};
 
 	return (
